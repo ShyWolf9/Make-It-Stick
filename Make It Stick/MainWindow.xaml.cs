@@ -25,7 +25,13 @@ namespace Make_It_Stick
     {
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+
+            using (var db = new Data.AppDbContext())
+            {
+                db.Database.EnsureCreated();
+                db.Database.EnsureDeleted();
+            }
         }
     }
 }
